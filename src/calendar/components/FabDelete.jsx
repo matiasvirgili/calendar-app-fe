@@ -1,5 +1,4 @@
-import React from "react";
-import { useCalendarStore } from "../../hooks/useCalendarStore";
+import { useCalendarStore, useUiStore } from "../../hooks";
 
 export const FabDelete = () => {
   const { startDeletingEvent, hasEventSelected } = useCalendarStore();

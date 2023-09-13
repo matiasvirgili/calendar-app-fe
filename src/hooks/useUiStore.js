@@ -1,27 +1,30 @@
-// Este hook me va a servir para dispacth de acciones y controlar todo lo que esta en el uiStore
-
 import { useDispatch, useSelector } from "react-redux";
-import { onCloseDateModal, onOpenDateModal } from "../store/ui/uiSlice";
+import { onCloseDateModal, onOpenDateModal } from "../store";
 
 export const useUiStore = () => {
-  // uso el dispacth para despachar acciones que defini en el reducer del uiSlice
-  const dispacth = useDispatch();
-  // Con el useSelector tengo acceso a todas las propiedades del uiStore
-  // Estoy tomando del uiStore el isDateModalOpen
+  const dispatch = useDispatch();
+
   const { isDateModalOpen } = useSelector((state) => state.ui);
 
-  const OpenDateModal = () => {
-    dispacth(onOpenDateModal());
+  const openDateModal = () => {
+    dispatch(onOpenDateModal());
   };
+
   const closeDateModal = () => {
-    dispacth(onCloseDateModal());
+    dispatch(onCloseDateModal());
   };
+
+  const toggleDateModal = () => {
+    isDateModalOpen ? openDateModal() : closeDateModal();
+  };
+
   return {
-    // Voy a regresar distintas propertis
+    //* Propiedades
     isDateModalOpen,
 
-    // Voy a regresar metodos para que hagan las acciones
-    OpenDateModal,
+    //* Métodos
     closeDateModal,
+    openDateModal,
+    toggleDateModal,
   };
 };

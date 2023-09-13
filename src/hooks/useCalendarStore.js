@@ -4,7 +4,7 @@ import {
   onDeleteEvent,
   onSetActiveEvent,
   onUpdateEvent,
-} from "../store/calendar/calendarSlice";
+} from "../store";
 
 export const useCalendarStore = () => {
   const dispatch = useDispatch();

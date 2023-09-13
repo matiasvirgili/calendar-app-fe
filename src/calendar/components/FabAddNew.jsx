@@ -1,10 +1,8 @@
-import React from "react";
-import { useUiStore } from "../../hooks/useUiStore";
-import { useCalendarStore } from "../../hooks/useCalendarStore";
 import { addHours } from "date-fns";
+import { useCalendarStore, useUiStore } from "../../hooks";
 
 export const FabAddNew = () => {
-  const { OpenDateModal } = useUiStore();
+  const { openDateModal } = useUiStore();
   const { setActiveEvent } = useCalendarStore();
 
   const handleClickNew = () => {
@@ -13,13 +11,15 @@ export const FabAddNew = () => {
       notes: "",
       start: new Date(),
       end: addHours(new Date(), 2),
+      bgColor: "#fafafa",
       user: {
-        name: "matias",
         _id: "123",
+        name: "Fernando",
       },
     });
-    OpenDateModal();
+    openDateModal();
   };
+
   return (
     <button className="btn btn-primary fab" onClick={handleClickNew}>
       <i className="fas fa-plus"></i>
